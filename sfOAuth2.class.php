@@ -74,7 +74,10 @@ class sfOAuth2 extends sfOAuth
 
     $params = $this->call($url, $this->getAccessParameters(), null, 'GET');
 
-    $params = OAuthUtil::parse_parameters($params);
+    // Some APIs (Foursquare) seem to answer everything in json
+    if (!$params = json_decode($params,true)) {
+      $params = OAuthUtil::parse_parameters($params);
+    }
 
     $access_token = isset($params['access_token'])?$params['access_token']:null;
 
