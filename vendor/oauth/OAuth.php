@@ -3,8 +3,10 @@
 
 /* Generic exception class
  */
-class OAuthException extends Exception {
-  // pass
+if (!extension_loaded('OAuth')) {
+  class OAuthException extends Exception {
+    // pass
+  }
 }
 
 class OAuthConsumer {
