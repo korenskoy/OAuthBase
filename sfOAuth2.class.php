@@ -72,7 +72,7 @@ class sfOAuth2 extends sfOAuth
 
     $this->addAccessParameters($parameters);
 
-    $params = $this->call($url, $this->getAccessParameters(), null, 'GET');
+    $params = $this->call($url, $this->getAccessParameters(), null, $this->getAccessTokenMethod());
 
     // Some APIs (Foursquare) seem to answer everything in json
     if (!$params = json_decode($params,true)) {

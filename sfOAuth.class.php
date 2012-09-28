@@ -36,7 +36,7 @@ abstract class sfOAuth
   protected $token;
 
   /**
-   * The url to request authorization
+   * URL to request authorization
    *
    * @var string $request_auth_url
    */
@@ -48,6 +48,13 @@ abstract class sfOAuth
    * @var string $access_token_url
    */
   protected $access_token_url;
+
+  /**
+   * Method to retrieve the access token (GET, POST)
+   *
+   * @var string $access_token_method
+   */
+  protected $access_token_method;
 
   /**
    * Namespaces used to access api
@@ -498,6 +505,33 @@ abstract class sfOAuth
   public function setAccessTokenUrl($access_token_url)
   {
     $this->access_token_url = $access_token_url;
+  }
+
+  /**
+   * getter $access_token_method
+   *
+   * @return string (default to 'GET' for backward compatibility)
+   *
+   * @author Simon Guillem-Lessard
+   * @since 27 septembre 2012
+   */
+  public function getAccessTokenMethod()
+  {
+    return $this->access_token_method == null ? 'GET' : $this->access_token_method;
+  }
+
+  /**
+   *
+   * @param string $access_token_method
+   *
+   * setter $access_token_method
+   *
+   * @author Simon Guillem-Lessard
+   * @since 27 septembre 2012
+   */
+  public function setAccessTokenMethod($access_token_method)
+  {
+    $this->access_token_method = $access_token_method;
   }
 
   /**
